@@ -1,0 +1,112 @@
+Kolejny etap projektu, czyli wchodzimy w szczegóły! To, co wysłałeś, to wytyczne do stworzenia Scenariuszy Przypadków Użycia.
+
+Mówiąc najprościej: prowadząca chce teraz, żebyście wzięli te owale z Waszego diagramu i dla każdego z nich napisali "instrukcję obsługi" krok po kroku – co klika użytkownik i jak reaguje komputer.
+
+Zgodnie z pierwszym zdjęciem, musicie stworzyć cały dokument z odpowiednim wstępem, a potem rozpisać poszczególne scenariusze dokładnie według punktów od S(n).1 do S(n).11.
+
+Przygotowałem dla Was gotowy szkielet dokumentu oraz dwa w pełni rozpisane scenariusze (Logowanie oraz Zarządzanie zgłoszeniami), idealnie dopasowane do Waszej firmy MIGKM i wzorowane na przykładzie ze sklepu internetowego.
+
+Wystarczy, że skopiujecie poniższy tekst do nowego pliku Word (lub jako kolejny rozdział Waszego projektu):
+
+Dokumentacja Scenariuszy Przypadków Użycia dla systemu "Pomoc drogowa – MIGKM"
+Wstęp
+Celem systemu "Pomoc drogowa – MIGKM" jest informatyzacja i usprawnienie procesów biznesowych związanych z przyjmowaniem zgłoszeń, dysponowaniem flotą pojazdów, realizacją zleceń w terenie oraz rozliczaniem usług. Dokument ten szczegółowo opisuje kroki niezbędne do realizacji głównych funkcji systemu przez jego użytkowników.
+
+Opis zakresu projektu
+Projekt obejmuje moduły systemu przeznaczone dla pracowników firmy (Dyspozytorów, Kierowców/Mechaników, Doradców ubezpieczeniowych, Księgowych oraz Menedżera). Obejmuje on logowanie, autoryzację, zarządzanie zgłoszeniami i zleceniami, a także ewidencję floty i generowanie dokumentów.
+
+Wyszczególnienie scenariuszy przypadków użycia
+
+S1. Logowanie pracownika do systemu MIGKM
+
+S2. Rejestracja i zarządzanie nowym zgłoszeniem
+
+S1 Logowanie pracownika do systemu MIGKM
+S1.1. Opis
+Funkcja pozwala na autoryzację pracownika w systemie i przydzielenie mu odpowiednich uprawnień zgodnie z jego rolą w firmie.
+
+S1.2. Wspierane procedury i procesy biznesowe
+Obsługa logowania i bezpieczeństwa dostępu do danych firmy.
+
+S1.3. Użytkownicy
+Wszyscy pracownicy firmy (Dyspozytor, Kierowca / Mechanik, Doradca ubezpieczeniowy, Księgowa, Menedżer) występujący pod ogólną rolą Użytkownika.
+
+S1.4. Warunki początkowe
+W bazie danych systemu znajdują się aktywne konta pracowników (login i hasło).
+
+S1.5. Warunki końcowe
+W systemie został zalogowany pracownik. System utrwala dane o sesji pracownika i ładuje interfejs odpowiedni dla jego stanowiska.
+
+S1.6. Przebieg główny (podstawowy)
+S1.6-1. Pracownik uruchamia system i podaje swój identyfikator (e-mail) oraz kod dostępu (hasło).
+S1.6-2. Pracownik zatwierdza dane przyciskiem logowania.
+S1.6-3. System weryfikuje poprawność danych w bazie.
+S1.6-4. System zapisuje ID pracownika, czas zalogowania i wyświetla ekran główny dopasowany do jego roli.
+
+S1.7. Przebiegi alternatywne
+PA1.7.1-1. Pracownik zapomniał hasła i wybiera opcję "Przypomnij hasło".
+PA1.7.1-2. System wysyła link resetujący na adres e-mail pracownika.
+
+S1.8. Sytuacje wyjątkowe
+SW1.8.1-1. Pracownik podał błędny login lub hasło.
+Akcja: System odmawia zalogowania, wyświetla komunikat o błędzie i prosi o ponowne wpisanie danych. Trzykrotne błędne wpisanie danych blokuje konto.
+
+S1.9. Reguły
+Uprawnienia po zalogowaniu zależą od przypisanej roli (zgodnie z diagramem DPU):
+
+Dyspozytor: ma dostęp do zarządzania zgłoszeniami.
+
+Kierowca/Mechanik: ma dostęp do aktualizacji statusu zlecenia w aplikacji mobilnej.
+
+Menedżer: ma pełny wgląd w system i dostęp do zarządzania flotą.
+
+S1.10. Wymagania niefunkcjonalne
+Hasła w bazie danych muszą być szyfrowane. Proces weryfikacji danych nie powinien trwać dłużej niż 2 sekundy.
+
+S1.11. Uwagi i pytania otwarte
+Brak.
+
+S2 Rejestracja i zarządzanie zgłoszeniem
+S2.1. Opis
+Funkcja pozwala Dyspozytorowi na wprowadzenie do systemu nowego zgłoszenia o awarii/kolizji od klienta oraz przydzielenie go do realizacji.
+
+S2.2. Wspierane procedury i procesy biznesowe
+Obsługa zgłoszeń klientów, dysponowanie pojazdami ratunkowymi (lawetami).
+
+S2.3. Użytkownicy
+Dyspozytor.
+
+S2.4. Warunki początkowe
+Dyspozytor jest poprawnie zalogowany do systemu (wykonano scenariusz S1).
+
+S2.5. Warunki końcowe
+Zgłoszenie zostaje zapisane w systemie, a wyznaczony Kierowca otrzymuje powiadomienie o nowym zleceniu.
+
+S2.6. Przebieg główny (podstawowy)
+S2.6-1. Dyspozytor odbiera zgłoszenie od klienta i wybiera w systemie opcję "Nowe zgłoszenie".
+S2.6-2. Dyspozytor wprowadza dane klienta, lokalizację zdarzenia oraz rodzaj awarii.
+S2.6-3. System wyświetla listę dostępnych (wolnych) Kierowców oraz lawet.
+S2.6-4. Dyspozytor przypisuje Kierowcę do zgłoszenia i klika "Zatwierdź zlecenie".
+S2.6-5. System zapisuje zlecenie w bazie ze statusem "Oczekujące na realizację".
+
+S2.7. Przebiegi alternatywne
+PA2.7.1-1. Zgłoszenie okazuje się pomyłką lub klient rezygnuje w trakcie rozmowy.
+PA2.7.1-2. Dyspozytor korzysta z rozszerzenia (zgodnie z relacją <<extend>>) i wybiera opcję "Anuluj zgłoszenie". System oznacza wpis jako anulowany.
+
+S2.8. Sytuacje wyjątkowe
+SW2.8.1-1. System w kroku S2.6-3 nie znajduje żadnego wolnego Kierowcy ani lawety w okolicy.
+Akcja: System wyświetla ostrzeżenie. Dyspozytor musi poinformować klienta o wydłużonym czasie oczekiwania i zapisać zgłoszenie do kolejki (bez przypisania kierowcy).
+
+S2.9. Reguły
+Zgłoszenie nie może zostać zatwierdzone bez podania dokładnej lokalizacji zdarzenia.
+
+S2.10. Wymagania niefunkcjonalne
+System musi zapewniać autozapis wprowadzanych danych podczas rozmowy z klientem.
+
+S2.11. Uwagi i pytania otwarte
+Brak.
+
+Co dalej?
+Macie już gotowy kompletny wstęp i 2 główne scenariusze. Zauważcie, jak fajnie w scenariuszu S2 (w punkcie S2.7) wykorzystałem to, co narysowaliśmy przed chwilą na diagramie – opcję anulowania jako rozszerzenie (<<extend>>). Wszystko spina się w logiczną całość.
+
+Aby praca była w 100% pełna, warto by było dopisać jeszcze chociaż jeden, trzeci scenariusz dla któregoś z innych owali (np. dla Kierowcy aktualizującego status albo Księgowej wystawiającej dokument). Czy chcecie, abym napisał Wam jeszcze Scenariusz S3? Dajcie znać, który pracownik najbardziej Was interesuje!
