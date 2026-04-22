@@ -134,4 +134,49 @@ System musi zapewniać autozapis wprowadzanych danych podczas rozmowy z klientem
 
 S2.11. Uwagi i pytania otwarte
 
+
 czy coś jeszcze dodać?
+
+
+
+
+===
+
+
+
+
+Nazwa	   Aktualizuj status zlecenia
+Numer   	3
+Twórca	   [Wasze imiona i nazwiska]
+Poziom ważności	    Wysoki
+Typ przypadku użycia    	Szczegółowy, istotny
+Aktorzy	    Kierowca / Mechanik
+Krótki opis       	Raportowanie postępów realizacji zlecenia w terenie za pomocą aplikacji mobilnej.
+Warunki wstępne      	Kierowca jest zalogowany do aplikacji (wykonano przypadek nr 1) i posiada aktywne przypisane zlecenie.
+Warunki końcowe      	Zlecenie otrzymuje status "Zakończone", a system informuje Dyspozytora o dostępności lawety.
+Główny przepływ zdarzeń	
+1) Kierowca otwiera przypisane zlecenie w aplikacji.
+
+
+2) Kierowca wybiera status "W drodze do klienta".
+
+
+3) Po dotarciu na miejsce, Kierowca wybiera status "W trakcie realizacji".
+
+
+4) Po wykonaniu usługi, Kierowca wybiera opcję "Zakończ zlecenie".
+
+
+5) System zapisuje dane, czas zakończenia i zwalnia zasoby (lawetę).
+
+Alternatywne przepływy zdarzeń	
+3b) Jeżeli na miejscu zdarzenia klient rezygnuje z usługi, Kierowca wybiera status "Anulowane na miejscu". System zamyka zlecenie z adnotacją o rezygnacji i następuje zakończenie przypadku.
+Wyjątki w przepływach	
+
+4a) Jeżeli aplikacja wykryje brak połączenia z internetem, system zapisuje zmiany statusów w pamięci lokalnej (tryb offline).
+
+
+4b) Po odzyskaniu połączenia system automatycznie synchronizuje dane z główną bazą.
+
+Specjalne wymagania	Interfejs musi posiadać duże, czytelne przyciski przystosowane do obsługi na urządzeniach mobilnych w trudnych warunkach (np. w słońcu lub deszczu).
+Notatki i kwestie	Każda zmiana statusu powinna być automatycznie wzbogacana o znacznik czasowy (timestamp) oraz opcjonalnie o pozycję GPS pojazdu.
