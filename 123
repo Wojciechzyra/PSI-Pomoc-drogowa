@@ -1,3 +1,19 @@
+Dokumentacja Scenariuszy Przypadków Użycia dla systemu "Pomoc drogowa – MIGKM"
+
+Wstęp:
+Celem systemu jest informatyzacja i usprawnienie procesów biznesowych związanych z przyjmowaniem zgłoszeń, dysponowaniem flotą pojazdów, realizacją zleceń w terenie oraz rozliczaniem usług.
+
+Opis zakresu projektu:
+Projekt obejmuje moduły systemu przeznaczone dla pracowników firmy (Dyspozytorów, Kierowców, Doradców, Księgowych oraz Menedżera).
+
+Wyszczególnienie scenariuszy:
+
+Logowanie pracownika do systemu.
+
+Rejestracja i zarządzanie zgłoszeniem.
+
+
+
 Scenariusze przypadków użycia
 
 S1. Logowanie pracownika do systemu MIGKM
